@@ -1,0 +1,9 @@
+* {
+    font-size: 30px;
+}
+
+.meny {
+    display: flex;
+    border: 1px solid black;
+    justify-content: space-around;
+}
