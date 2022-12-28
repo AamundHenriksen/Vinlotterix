@@ -1,70 +1,6 @@
 "use strict"
 
-// Model
-const app = document.getElementById("app")
-const ansatte = [
-    "Åmund",
-    "Exi",
-    "Ben",
-    "Loe",
-    "Sondre",
-    "Herman"
-]
-const medPåTrekningen = []
-let antallVinnere = ""
-let antallVinnereIgjen = ""
-
-// View
-updateView() 
-function updateView() {
-    let html = ""
-
-    html += `
-    <div id="meny" style="visibility:visible">
-        <div>
-            <h1 onclick="menneskerMeny()">Mennesker</h1>
-            <p id="mennesker" style="display:none">Mennesker test</p>
-        </div>
-
-        <div>
-            <h1 onclick="utførteTrekningerMeny()">Utførte trekninger</h1>
-            <p id="utførteTrekninger" style="display:none">Utførte trekninger test</p>
-        </div>
-    </div>
-
-    <button onclick="toggleMeny()">Lukk meny</button>
-    
-    <ul>
-    `
-        for (let i = 0; i < ansatte.length; i++) {
-            html += `<li onclick="leggTilPåLista(this.innerHTML)">${ansatte[i]}</li>`
-        }
-
-    html += `
-    </ul>
-
-    <div id="påmeldtListe">
-        <h1>Påmeldte:</h1>
-        <ul>`
-            for (let i = 0; i < medPåTrekningen.length; i++) {
-                html += `<li onclick="fjernFraLista(this.innerHTML)">${medPåTrekningen[i]}</li>`
-            }
-    html += `
-        </ul>
-
-    </div>
-
-    <h1>Velg antall vinnere:</h1>
-    <input type="number" oninput="velgAntallVinnere(this.value)" min=0 max=5 style="width:50px" value=${antallVinnere}> <br>
-
-    <button onclick="plukkTilfeldig()">Plukk tilfeldig</button>
-    `
-
-    app.innerHTML = html
-}
-
-// Controller
-function leggTilPåLista(ansatt) {
+function leggTilPåTrekningLista(ansatt) {
     if (medPåTrekningen.includes(ansatt)) {
         return console.log(`${ansatt} er allerede lagt til på lista`)
     }
@@ -72,7 +8,7 @@ function leggTilPåLista(ansatt) {
     updateView()
 }
 
-function fjernFraLista(ansatt) {
+function fjernFraTrekningLista(ansatt) {
     const ansattIndeks = medPåTrekningen.indexOf(ansatt)
     medPåTrekningen.splice(ansattIndeks, 1)
     updateView()
@@ -88,11 +24,12 @@ function plukkTilfeldig() {
         return console.log(`Påmeldte og antall vinnere er nødvendig for å begynne`)
     } 
 
-    const vinnerAnsatt = medPåTrekningen[Math.floor(Math.random() * medPåTrekningen.length)]
+    const vinnerAnsatte = medPåTrekningen[Math.floor(Math.random() * medPåTrekningen.length)]
 
     antallVinnereIgjen--
-    console.log(`${vinnerAnsatt} har vunnet!`)
-    fjernFraLista(vinnerAnsatt)
+    console.log(`${vinnerAnsatte} har vunnet!`)
+    fjernFraTrekningLista(vinnerAnsatte)
+    lagreDatoOgVinnere(vinnerAnsatte)
 
     if (antallVinnereIgjen === 0 || medPåTrekningen.length === 0) {
         medPåTrekningen.length = 0
@@ -138,4 +75,9 @@ function toggleMeny() {
     }
     
     meny.style.visibility = "visible"
+}
+
+function lagreDatoOgVinnere(ansatt) {
+    utførteTrekningerHistorikk[utførteTrekningerHistorikk.length - 1].dato = `${måneder[d.getMonth()]} ${d.getFullYear()}:`
+    utførteTrekningerHistorikk[utførteTrekningerHistorikk.length - 1].vinnere.push(ansatt)
 }
