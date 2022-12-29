@@ -14,14 +14,19 @@ function fjernFraTrekningLista(ansatt) {
     updateView()
 }
 
-function velgAntallVinnere(antall) {
-    antallVinnere = antall
+function velgAntallVinnere(antallInput) {
+    if (isNaN(antallInput.value)) {
+        console.log("Du kan kun skrive inn tall i input feltet")
+        return antallInput.value = 0
+    }
+
+    antallVinnere = +antallInput.value
     antallVinnereIgjen = antallVinnere
 }
 
 function plukkTilfeldig() {
-    if (medPåTrekningen.length === 0 || antallVinnere === "") {
-        return console.log(`Påmeldte og antall vinnere er nødvendig for å begynne`)
+    if (medPåTrekningen.length === 0 || !antallVinnere) {
+        return console.log(`Påmeldte og antall vinnere er nødvendig for å starte vinlotteriet`)
     } 
 
     const vinnerAnsatte = medPåTrekningen[Math.floor(Math.random() * medPåTrekningen.length)]
@@ -31,31 +36,31 @@ function plukkTilfeldig() {
     fjernFraTrekningLista(vinnerAnsatte)
     lagreDatoOgVinnere(vinnerAnsatte)
 
-    if (antallVinnereIgjen === 0 || medPåTrekningen.length === 0) {
+    if (antallVinnereIgjen <= 0 || medPåTrekningen.length === 0) {
         medPåTrekningen.length = 0
-        antallVinnere = ""
-        antallVinnereIgjen = ""
+        antallVinnere = 0
+        antallVinnereIgjen = 0
         console.log("Vinlotteriet er ferdig")
         return updateView()
     }
 }
 
-function menneskerMeny() {
-    const mennesker = document.getElementById("mennesker") // <-- Ikke nødvendig å ha de her, men gjør det lettere å lese koden.
+function personerMeny() {
+    const personer = document.getElementById("personer") // <-- Ikke nødvendig å ha de her, men gjør det lettere å lese koden.
     const utførteTrekninger = document.getElementById("utførteTrekninger")
 
-    if (mennesker.style.display === "block") {
-        mennesker.style.display = "none"
+    if (personer.style.display === "block") {
+        personer.style.display = "none"
         return 
     }
 
-    mennesker.style.display = "block"
+    personer.style.display = "block"
     utførteTrekninger.style.display = "none"
 }
 
 function utførteTrekningerMeny() {
     const utførteTrekninger = document.getElementById("utførteTrekninger")
-    const mennesker = document.getElementById("mennesker") // <-- Ikke nødvendig å ha de her, men gjør det lettere å lese koden.
+    const personer = document.getElementById("personer") // <-- Ikke nødvendig å ha de her, men gjør det lettere å lese koden.
 
     if (utførteTrekninger.style.display === "block") {
         utførteTrekninger.style.display = "none"
@@ -63,18 +68,20 @@ function utførteTrekningerMeny() {
     }
 
     utførteTrekninger.style.display = "block" 
-    mennesker.style.display = "none"
+    personer.style.display = "none"
 }
 
-function toggleMeny() {
+function toggleMeny(knappeTekst) {
     const meny = document.getElementById("meny") // <-- Ikke nødvendig å ha den her, men gjør det lettere å lese koden.
 
     if (meny.style.visibility === "visible") {
         meny.style.visibility = "hidden"
+        knappeTekst.innerHTML = "Vis meny"
         return
     }
     
     meny.style.visibility = "visible"
+    knappeTekst.innerHTML = "Skjul meny"
 }
 
 function lagreDatoOgVinnere(ansatt) {

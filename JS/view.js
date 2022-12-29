@@ -5,50 +5,54 @@ function updateView() {
     let html = ""
 
     html += `
-    <div id="meny" style="visibility:visible">
-        <div>
-            <h1 onclick="menneskerMeny()">Mennesker</h1>
-            <p id="mennesker" style="display:none">Mennesker test</p>
+    <div class="container">
+        <div id="meny" style="visibility:visible">
+            <div>
+                <h1 onclick="personerMeny()">Personer</h1>
+                <ul id="personer">
+                `
+                    for (let i = 0; i < personerListe.length; i++) {
+                        html += `<li onclick="leggTilPåTrekningLista(this.innerHTML)">${personerListe[i]}</li>`
+                    }
+            
+                html += `
+                </ul>
+            </div>
+
+            <div>
+                <h1 onclick="utførteTrekningerMeny()">Utførte trekninger</h1>
+                <ul id="utførteTrekninger" style="display:none">`
+                    for (let i = 0; i < utførteTrekningerHistorikk.length; i++) {
+                        html += `<li>${utførteTrekningerHistorikk[i].dato} ${utførteTrekningerHistorikk[i].vinnere.join(", ")}</li>`
+                    }
+                html += `
+                </ul>
+            </div>
         </div>
 
-        <div>
-            <h1 onclick="utførteTrekningerMeny()">Utførte trekninger</h1>
-            <ul id="utførteTrekninger" style="display:none">`
-                for (let i = 0; i < utførteTrekningerHistorikk.length; i++) {
-                    html += `<li>${utførteTrekningerHistorikk[i].dato} ${utførteTrekningerHistorikk[i].vinnere.join(", ")}</li>`
-                }
+        <button onclick="toggleMeny(this)">Skjul meny</button>
+        <div class="vinlotteri-oppsett">
+
+            <div class="påmeldte">
+                <h2>Påmeldte:</h2>
+                <ul>`
+                    for (let i = 0; i < medPåTrekningen.length; i++) {
+                        html += `<li onclick="fjernFraTrekningLista(this.innerHTML)">${medPåTrekningen[i]}</li>`
+                    }
             html += `
-            </ul>
+                </ul>
+
+            </div>
+
+            <div class="antall-vinnere">
+                <h2>Velg antall vinnere (1-9):</h2>
+                <input type="text" oninput="velgAntallVinnere(this)" maxlength=1 value="${antallVinnere}">
+            </div>
+
+            <button onclick="plukkTilfeldig()">Plukk tilfeldig</button>
+
         </div>
     </div>
-
-    <button onclick="toggleMeny()">Lukk meny</button>
-    
-    <ul>
     `
-        for (let i = 0; i < ansatte.length; i++) {
-            html += `<li onclick="leggTilPåTrekningLista(this.innerHTML)">${ansatte[i]}</li>`
-        }
-
-    html += `
-    </ul>
-
-    <div id="påmeldtListe">
-        <h1>Påmeldte:</h1>
-        <ul>`
-            for (let i = 0; i < medPåTrekningen.length; i++) {
-                html += `<li onclick="fjernFraTrekningLista(this.innerHTML)">${medPåTrekningen[i]}</li>`
-            }
-    html += `
-        </ul>
-
-    </div>
-
-    <h1>Velg antall vinnere:</h1>
-    <input type="number" oninput="velgAntallVinnere(this.value)" min=0 max=5 style="width:50px" value=${antallVinnere}> <br>
-
-    <button onclick="plukkTilfeldig()">Plukk tilfeldig</button>
-    `
-
     app.innerHTML = html
 }

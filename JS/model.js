@@ -16,7 +16,7 @@ const utførteTrekningerHistorikk = [
         vinnere: []
     }
 ]
-const ansatte = [
+const personerListe = [
     "Åmund",
      "Exi",
       "Ben",
@@ -40,5 +40,5 @@ const måneder = [
                "Desember"
             ]
 const d = new Date()
-let antallVinnere = ""
-let antallVinnereIgjen = ""
+let antallVinnere = 0
+let antallVinnereIgjen = 0

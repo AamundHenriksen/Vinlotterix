@@ -1,5 +1,24 @@
 * {
-    font-size: 30px;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    background-image: url("wine-cellar.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+}
+
+.container {
+    margin-top: 100px;
+    margin-left: 1200px;
+    width: 700px;
+    background: linear-gradient(to bottom, #272727, #000000);
 }
 
 #meny {
@@ -7,4 +26,74 @@
     border: 1px solid black;
     justify-content: space-around;
     visibility: visible;
+}
+
+.vinlotteri-oppsett {
+    padding: 15px;
+}
+
+.påmeldte {
+    background: linear-gradient(to top, #fefade, #424242);
+    width: fit-content;
+    min-height: 200px;
+    max-height: fit-content;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.påmeldte h2 {
+    font-size: 25px;
+    font-style: italic;
+}
+
+.påmeldte li {
+    list-style: none;
+    font-size: 24px;
+    margin: 5px 0;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.påmeldte li:hover {
+    text-decoration: line-through;
+}
+
+.antall-vinnere {
+    background: #ffffff;
+    width: fit-content;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.antall-vinnere h2 {
+    font-size: 25px;
+    font-style: italic;
+}
+
+.antall-vinnere input[type=text] {
+    text-align: center;
+    font-size: 25px;
+    outline: none;
+    appearance: none;
+    width: 50px;
+    margin-top: 10px;
+    border-radius: 3px;
+}
+
+button:last-child {
+    font-size: 20px;
+    appearance: none;
+    border: 0;
+    background: linear-gradient(to bottom, #5f3b21, #31231d);
+    color: #fef6f6;
+    font-weight: 600;
+    padding: 5px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:last-child:hover {
+    background: linear-gradient(to bottom, #5f3b21, #31231d);
+    color: #e2c198;
 }
