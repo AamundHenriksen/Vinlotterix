@@ -1,14 +1,15 @@
 "use strict"
+
 const app = document.getElementById("app")
 const utførteTrekningerHistorikk = [
     {
         dato: "Oktober 2022:",
-        vinnere: ["Åmund", "Sondre"]
+        vinnere: ["Lars", "Mille"]
     },
 
     {
         dato: "November 2022:",
-        vinnere: ["Ben"]
+        vinnere: ["Nils", "Trude", "Mathias"]
     },
 
     {
@@ -17,12 +18,18 @@ const utførteTrekningerHistorikk = [
     }
 ]
 const personerListe = [
-    "Åmund",
-     "Exi",
-      "Ben",
-       "Loe",
-        "Sondre",
-         "Herman"
+    "Marianne",
+     "Bjørnar",
+      "Glenn",
+       "Trude",
+        "Lars",
+         "Anne",
+         "Elisabeth",
+         "Helge",
+         "Mathias",
+         "Mille",
+         "Roger",
+         "Nils"
         ]
 const medPåTrekningen = []
 const måneder = [

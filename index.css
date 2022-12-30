@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
+    user-select: none;
 }
 
 body {
@@ -14,26 +15,22 @@ body {
     height: 100vh;
 }
 
+/* margin-left: 1200px; */
 .container {
-    margin-top: 100px;
-    margin-left: 1200px;
-    width: 700px;
-    background: linear-gradient(to bottom, #272727, #000000);
-}
-
-#meny {
     display: flex;
-    border: 1px solid black;
-    justify-content: space-around;
-    visibility: visible;
+    margin-top: 100px;
 }
 
 .vinlotteri-oppsett {
     padding: 15px;
+    border-radius: 5px;
+    background: linear-gradient(to bottom, #291f0f, #4a3b27, #000000);
+    width: 350px;
+    height: fit-content;
 }
 
 .påmeldte {
-    background: linear-gradient(to top, #fefade, #424242);
+    background: linear-gradient(to bottom, #dcb47c, #f1d0ac, #d6a86f);
     width: fit-content;
     min-height: 200px;
     max-height: fit-content;
@@ -59,7 +56,7 @@ body {
 }
 
 .antall-vinnere {
-    background: #ffffff;
+    background: linear-gradient(to bottom, #dcb47c, #f1d0ac, #d6a86f);
     width: fit-content;
     padding: 10px;
     border-radius: 10px;
@@ -79,21 +76,86 @@ body {
     width: 50px;
     margin-top: 10px;
     border-radius: 3px;
+    border: 0;
+    background: #fff;
+    font-weight: 600;
 }
 
-button:last-child {
+button {
     font-size: 20px;
     appearance: none;
     border: 0;
-    background: linear-gradient(to bottom, #5f3b21, #31231d);
-    color: #fef6f6;
+    background: linear-gradient(to bottom, #754318, #31231d);
+    color: #f8dfb1;
     font-weight: 600;
-    padding: 5px 15px;
+    width: 160px;
+    height: 35px;
     cursor: pointer;
     border-radius: 5px;
+    margin-top: 20px;
 }
 
-button:last-child:hover {
-    background: linear-gradient(to bottom, #5f3b21, #31231d);
+button:last-child {
+    margin-left: 49px;
+    width: 136px;
+}
+
+button:hover {
+    background: linear-gradient(to bottom, #754318, #31231d);
     color: #e2c198;
+}
+
+#meny {
+    display: flex;
+    margin-left: 25px;
+    border-radius: 5px;
+    justify-content: space-around;
+    visibility: visible;
+    padding: 15px;
+    height: fit-content;
+    background: linear-gradient(to bottom, #291f0f, #4a3b27, #000000);
+}
+
+#meny h1 {
+    font-size: 30px;
+    font-style: italic;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+#meny h1:hover {
+    text-decoration: underline;
+}
+
+#meny div {
+    background: linear-gradient(to bottom, #dcb47c, #f1d0ac, #d6a86f);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#meny div:first-child {
+    margin-right: 10px;
+}
+
+#meny div:last-child {
+    margin-left: 10px;
+}
+
+#personer li {
+    list-style: none;
+    font-size: 24px;
+    margin: 5px 0;
+    cursor: pointer;
+    width: fit-content;
+}
+
+#personer li:hover {
+    text-decoration: underline;
+}
+
+#utførteTrekninger li {
+    list-style: none;
+    font-size: 24px;
+    margin: 5px 0;
+    width: fit-content;
 }

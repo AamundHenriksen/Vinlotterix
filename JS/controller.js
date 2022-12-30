@@ -3,7 +3,11 @@
 function leggTilPåTrekningLista(ansatt) {
     if (medPåTrekningen.includes(ansatt)) {
         return console.log(`${ansatt} er allerede lagt til på lista`)
+
+    } else if (utførteTrekningerHistorikk[utførteTrekningerHistorikk.length - 1].vinnere.length > 0) {
+        return console.log("Vinnere av vinlotteriet denne måneden finnes allerede")
     }
+    
     medPåTrekningen.push(ansatt)
     updateView()
 }
@@ -15,7 +19,7 @@ function fjernFraTrekningLista(ansatt) {
 }
 
 function velgAntallVinnere(antallInput) {
-    if (isNaN(antallInput.value)) {
+    if (isNaN(antallInput.value) || antallInput.value > 5) {
         console.log("Du kan kun skrive inn tall i input feltet")
         return antallInput.value = 0
     }
@@ -27,7 +31,7 @@ function velgAntallVinnere(antallInput) {
 function plukkTilfeldig() {
     if (medPåTrekningen.length === 0 || !antallVinnere) {
         return console.log(`Påmeldte og antall vinnere er nødvendig for å starte vinlotteriet`)
-    } 
+    }
 
     const vinnerAnsatte = medPåTrekningen[Math.floor(Math.random() * medPåTrekningen.length)]
 
@@ -46,29 +50,23 @@ function plukkTilfeldig() {
 }
 
 function personerMeny() {
-    const personer = document.getElementById("personer") // <-- Ikke nødvendig å ha de her, men gjør det lettere å lese koden.
-    const utførteTrekninger = document.getElementById("utførteTrekninger")
+    const personer = document.getElementById("personer") // <-- Ikke nødvendig å ha den her, men gjør det lettere å lese koden.
 
-    if (personer.style.display === "block") {
-        personer.style.display = "none"
-        return 
+    if (personer.style.display === "none") {
+        return personer.style.display = "block" 
     }
 
-    personer.style.display = "block"
-    utførteTrekninger.style.display = "none"
+    personer.style.display = "none"
 }
 
 function utførteTrekningerMeny() {
-    const utførteTrekninger = document.getElementById("utførteTrekninger")
-    const personer = document.getElementById("personer") // <-- Ikke nødvendig å ha de her, men gjør det lettere å lese koden.
+    const utførteTrekninger = document.getElementById("utførteTrekninger") // <-- Ikke nødvendig å ha den her, men gjør det lettere å lese koden.
 
-    if (utførteTrekninger.style.display === "block") {
-        utførteTrekninger.style.display = "none"
-        return 
+    if (utførteTrekninger.style.display === "none") {
+        return utførteTrekninger.style.display = "block"
     }
 
-    utførteTrekninger.style.display = "block" 
-    personer.style.display = "none"
+    utførteTrekninger.style.display = "none"
 }
 
 function toggleMeny(knappeTekst) {
@@ -84,7 +82,7 @@ function toggleMeny(knappeTekst) {
     knappeTekst.innerHTML = "Skjul meny"
 }
 
-function lagreDatoOgVinnere(ansatt) {
+function lagreDatoOgVinnere(person) {
     utførteTrekningerHistorikk[utførteTrekningerHistorikk.length - 1].dato = `${måneder[d.getMonth()]} ${d.getFullYear()}:`
-    utførteTrekningerHistorikk[utførteTrekningerHistorikk.length - 1].vinnere.push(ansatt)
+    utførteTrekningerHistorikk[utførteTrekningerHistorikk.length - 1].vinnere.push(person)
 }
