@@ -1,20 +1,20 @@
 "use strict"
 
-function leggTilPåTrekningLista(ansatt) {
-    if (medPåTrekningen.includes(ansatt)) {
-        return console.log(`${ansatt} er allerede lagt til på lista`)
+function leggTilPåTrekningLista(person) {
+    if (medPåTrekningen.includes(person)) {
+        return console.log(`${person} er allerede lagt til på lista`)
 
     } else if (utførteTrekningerHistorikk[utførteTrekningerHistorikk.length - 1].vinnere.length > 0) {
         return console.log("Vinnere av vinlotteriet denne måneden finnes allerede")
     }
-    
-    medPåTrekningen.push(ansatt)
+
+    medPåTrekningen.push(person)
     updateView()
 }
 
-function fjernFraTrekningLista(ansatt) {
-    const ansattIndeks = medPåTrekningen.indexOf(ansatt)
-    medPåTrekningen.splice(ansattIndeks, 1)
+function fjernFraTrekningLista(person) {
+    const personIndeks = medPåTrekningen.indexOf(person)
+    medPåTrekningen.splice(personIndeks, 1)
     updateView()
 }
 
@@ -33,12 +33,12 @@ function plukkTilfeldig() {
         return console.log(`Påmeldte og antall vinnere er nødvendig for å starte vinlotteriet`)
     }
 
-    const vinnerAnsatte = medPåTrekningen[Math.floor(Math.random() * medPåTrekningen.length)]
+    const vinnerPersoner = medPåTrekningen[Math.floor(Math.random() * medPåTrekningen.length)]
 
     antallVinnereIgjen--
-    console.log(`${vinnerAnsatte} har vunnet!`)
-    fjernFraTrekningLista(vinnerAnsatte)
-    lagreDatoOgVinnere(vinnerAnsatte)
+    console.log(`${vinnerPersoner} har vunnet!`)
+    fjernFraTrekningLista(vinnerPersoner)
+    lagreDatoOgVinnere(vinnerPersoner)
 
     if (antallVinnereIgjen <= 0 || medPåTrekningen.length === 0) {
         medPåTrekningen.length = 0
