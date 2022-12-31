@@ -101,7 +101,6 @@ button:last-child {
 }
 
 button:hover {
-    background: linear-gradient(to bottom, #754318, #31231d);
     color: #e2c198;
 }
 
@@ -119,12 +118,7 @@ button:hover {
 #menu h1 {
     font-size: 30px;
     font-style: italic;
-    cursor: pointer;
     margin-bottom: 15px;
-}
-
-#menu h1:hover {
-    text-decoration: underline;
 }
 
 #menu div {
@@ -158,4 +152,16 @@ button:hover {
     font-size: 24px;
     margin: 5px 0;
     width: fit-content;
+}
+
+#message {
+    position: absolute;
+    top: 150px;
+    margin-left: 163px;
+    color: #f8dfb1;
+    background: linear-gradient(to bottom, #754318, #31231d);
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    width: 150px;
 }

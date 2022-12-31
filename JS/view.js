@@ -20,6 +20,8 @@ function updateView() {
 
             </div>
 
+            <div id="message" style="display:none"></div>
+
             <div class="amount-of-winners">
                 <h2>Select amount of winners (1-5):</h2>
                 <input type="text" oninput="selectAmountOfWinners(this)" maxlength=1 value="${model.amountOfWinners}">
@@ -32,7 +34,7 @@ function updateView() {
 
         <div id="menu" style="visibility:visible">
             <div>
-                <h1 onclick="personsMenu()">Persons</h1>
+                <h1>Persons</h1>
                 <ul id="persons">
                 `
                     for (let i = 0; i < model.personsList.length; i++) {
@@ -44,7 +46,7 @@ function updateView() {
             </div>
 
             <div>
-                <h1 onclick="performedDrawsMenu()">Performed draws</h1>
+                <h1>Performed draws</h1>
                 <ul id="performedDraws">`
                     for (let i = 0; i < model.performedDrawsHistory.length; i++) {
                         html += `

@@ -6,7 +6,7 @@ const model = {
     performedDrawsHistory: [
         {
             date: "October 2022:",
-            winners: ["Lars", "Mille"]
+            winners: ["Lars", "Mille"],
         },
     
         {
