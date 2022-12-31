@@ -21,7 +21,7 @@ body {
     margin-top: 100px;
 }
 
-.vinlotteri-oppsett {
+.wine-lottery-setup {
     padding: 15px;
     border-radius: 5px;
     background: linear-gradient(to bottom, #291f0f, #4a3b27, #000000);
@@ -29,7 +29,7 @@ body {
     height: fit-content;
 }
 
-.påmeldte {
+.entrants {
     background: linear-gradient(to bottom, #dcb47c, #f1d0ac, #d6a86f);
     width: fit-content;
     min-height: 200px;
@@ -38,12 +38,12 @@ body {
     border-radius: 10px;
 }
 
-.påmeldte h2 {
+.entrants h2 {
     font-size: 25px;
     font-style: italic;
 }
 
-.påmeldte li {
+.entrants li {
     list-style: none;
     font-size: 24px;
     margin: 5px 0;
@@ -51,11 +51,11 @@ body {
     width: fit-content;
 }
 
-.påmeldte li:hover {
+.entrants li:hover {
     text-decoration: line-through;
 }
 
-.antall-vinnere {
+.amount-of-winners {
     background: linear-gradient(to bottom, #dcb47c, #f1d0ac, #d6a86f);
     width: fit-content;
     padding: 10px;
@@ -63,12 +63,12 @@ body {
     margin-top: 20px;
 }
 
-.antall-vinnere h2 {
+.amount-of-winners h2 {
     font-size: 25px;
     font-style: italic;
 }
 
-.antall-vinnere input[type=text] {
+.amount-of-winners input[type=text] {
     text-align: center;
     font-size: 25px;
     outline: none;
@@ -105,7 +105,7 @@ button:hover {
     color: #e2c198;
 }
 
-#meny {
+#menu {
     display: flex;
     margin-left: 25px;
     border-radius: 5px;
@@ -116,32 +116,32 @@ button:hover {
     background: linear-gradient(to bottom, #291f0f, #4a3b27, #000000);
 }
 
-#meny h1 {
+#menu h1 {
     font-size: 30px;
     font-style: italic;
     cursor: pointer;
     margin-bottom: 15px;
 }
 
-#meny h1:hover {
+#menu h1:hover {
     text-decoration: underline;
 }
 
-#meny div {
+#menu div {
     background: linear-gradient(to bottom, #dcb47c, #f1d0ac, #d6a86f);
     padding: 10px;
     border-radius: 10px;
 }
 
-#meny div:first-child {
+#menu div:first-child {
     margin-right: 10px;
 }
 
-#meny div:last-child {
+#menu div:last-child {
     margin-left: 10px;
 }
 
-#personer li {
+#persons li {
     list-style: none;
     font-size: 24px;
     margin: 5px 0;
@@ -149,11 +149,11 @@ button:hover {
     width: fit-content;
 }
 
-#personer li:hover {
+#persons li:hover {
     text-decoration: underline;
 }
 
-#utførteTrekninger li {
+#performedDraws li {
     list-style: none;
     font-size: 24px;
     margin: 5px 0;

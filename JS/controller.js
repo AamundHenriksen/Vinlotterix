@@ -1,88 +1,87 @@
 "use strict"
 
-function leggTilPåTrekningLista(person) {
-    if (medPåTrekningen.includes(person)) {
-        return console.log(`${person} er allerede lagt til på lista`)
+function addToDrawList(person) {
+    if (model.inTheDraw.includes(person)) {
+        return console.log(`${person} has already been added to the list`)
 
-    } else if (utførteTrekningerHistorikk[utførteTrekningerHistorikk.length - 1].vinnere.length > 0) {
-        return console.log("Vinnere av vinlotteriet denne måneden finnes allerede")
+    } else if (model.performedDrawsHistory[model.performedDrawsHistory.length - 1].winners.length > 0) {
+        return console.log("Winners of this month's wine lottery already exist")
     }
 
-    medPåTrekningen.push(person)
+    model.inTheDraw.push(person)
     updateView()
 }
 
-function fjernFraTrekningLista(person) {
-    const personIndeks = medPåTrekningen.indexOf(person)
-    medPåTrekningen.splice(personIndeks, 1)
+function removeFromDrawList(person) {
+    const personIndex = model.inTheDraw.indexOf(person)
+    model.inTheDraw.splice(personIndex, 1)
     updateView()
 }
 
-function velgAntallVinnere(antallInput) {
-    if (isNaN(antallInput.value) || antallInput.value > 5) {
+function selectAmountOfWinners(amountInput) {
+    if (isNaN(amountInput.value) || amountInput.value > 5) {
         console.log("Du kan kun skrive inn tall i input feltet")
-        return antallInput.value = 0
+        return amountInput.value = 0
     }
 
-    antallVinnere = +antallInput.value
-    antallVinnereIgjen = antallVinnere
+    model.amountOfWinners = +amountInput.value
+    model.amountOfWinnersLeft = model.amountOfWinners
 }
 
-function plukkTilfeldig() {
-    if (medPåTrekningen.length === 0 || !antallVinnere) {
-        return console.log(`Påmeldte og antall vinnere er nødvendig for å starte vinlotteriet`)
+function pickRandom() {
+    if (model.inTheDraw.length === 0 || !model.amountOfWinners) {
+        return console.log(`Entrants and the amount of winners are required to start the wine lottery`)
     }
 
-    const vinnerPersoner = medPåTrekningen[Math.floor(Math.random() * medPåTrekningen.length)]
+    const winnerPersons = model.inTheDraw[Math.floor(Math.random() * model.inTheDraw.length)]
 
-    antallVinnereIgjen--
-    console.log(`${vinnerPersoner} har vunnet!`)
-    fjernFraTrekningLista(vinnerPersoner)
-    lagreDatoOgVinnere(vinnerPersoner)
+    model.amountOfWinnersLeft--
+    console.log(`${winnerPersons} has won!`)
+    removeFromDrawList(winnerPersons)
+    saveDateAndWinners(winnerPersons)
 
-    if (antallVinnereIgjen <= 0 || medPåTrekningen.length === 0) {
-        medPåTrekningen.length = 0
-        antallVinnere = 0
-        antallVinnereIgjen = 0
-        console.log("Vinlotteriet er ferdig")
+    if (model.amountOfWinnersLeft <= 0 || model.inTheDraw.length === 0) {
+        model.inTheDraw.length = 0
+        model.amountOfWinners = 0
+        model.amountOfWinnersLeft = 0
+        console.log("The wine lottery is over")
         return updateView()
     }
 }
 
-function personerMeny() {
-    const personer = document.getElementById("personer") // <-- Ikke nødvendig å ha den her, men gjør det lettere å lese koden.
+function personsMenu() {
+    const persons = document.getElementById("persons") // <-- Not necessary to have it here, but makes the code easier to read.
 
-    if (personer.style.display === "none") {
-        return personer.style.display = "block" 
+    if (persons.style.display === "none") {
+        return persons.style.display = "block" 
     }
 
-    personer.style.display = "none"
+    persons.style.display = "none"
 }
 
-function utførteTrekningerMeny() {
-    const utførteTrekninger = document.getElementById("utførteTrekninger") // <-- Ikke nødvendig å ha den her, men gjør det lettere å lese koden.
+function performedDrawsMenu() {
+    const performedDraws = document.getElementById("performedDraws") // <-- Not necessary to have it here, but makes the code easier to read.
 
-    if (utførteTrekninger.style.display === "none") {
-        return utførteTrekninger.style.display = "block"
+    if (performedDraws.style.display === "none") {
+        return performedDraws.style.display = "block"
     }
 
-    utførteTrekninger.style.display = "none"
+    performedDraws.style.display = "none"
 }
 
-function toggleMeny(knappeTekst) {
-    const meny = document.getElementById("meny") // <-- Ikke nødvendig å ha den her, men gjør det lettere å lese koden.
+function toggleMenu(buttonText) {
+    const menu = document.getElementById("menu") // <-- Not necessary to have it here, but makes the code easier to read.
 
-    if (meny.style.visibility === "visible") {
-        meny.style.visibility = "hidden"
-        knappeTekst.innerHTML = "Vis meny"
-        return
+    if (menu.style.visibility === "visible") {
+        menu.style.visibility = "hidden"
+        return buttonText.innerHTML = "Show menu"
     }
     
-    meny.style.visibility = "visible"
-    knappeTekst.innerHTML = "Skjul meny"
+    menu.style.visibility = "visible"
+    buttonText.innerHTML = "Hide menu"
 }
 
-function lagreDatoOgVinnere(person) {
-    utførteTrekningerHistorikk[utførteTrekningerHistorikk.length - 1].dato = `${måneder[d.getMonth()]} ${d.getFullYear()}:`
-    utførteTrekningerHistorikk[utførteTrekningerHistorikk.length - 1].vinnere.push(person)
+function saveDateAndWinners(person) {
+    model.performedDrawsHistory[model.performedDrawsHistory.length - 1].date = `${model.months[model.d.getMonth()]} ${model.d.getFullYear()}:`
+    model.performedDrawsHistory[model.performedDrawsHistory.length - 1].winners.push(person)
 }

@@ -1,51 +1,58 @@
 "use strict"
 
-const app = document.getElementById("app")
-const utførteTrekningerHistorikk = [
-    {
-        dato: "Oktober 2022:",
-        vinnere: ["Lars", "Mille"]
-    },
+const model = {
+    app: document.getElementById("app"),
 
-    {
-        dato: "November 2022:",
-        vinnere: ["Nils", "Trude", "Mathias"]
-    },
+    performedDrawsHistory: [
+        {
+            date: "October 2022:",
+            winners: ["Lars", "Mille"]
+        },
+    
+        {
+            date: "November 2022:",
+            winners: ["Nils", "Trude", "Mathias"]
+        },
+    
+        {
+            date: "",
+            winners: []
+        }
+    ],
 
-    {
-        dato: "",
-        vinnere: []
-    }
-]
-const personerListe = [
-    "Marianne",
-     "Bjørnar",
-      "Glenn",
-       "Trude",
-        "Lars",
-         "Anne",
-         "Elisabeth",
-         "Helge",
-         "Mathias",
-         "Mille",
-         "Roger",
-         "Nils"
-        ]
-const medPåTrekningen = []
-const måneder = [
-    "Januar",
-     "Februar",
-      "Mars",
-       "April",
-        "Mai",
-         "Juni",
-          "Juli",
-           "August",
-            "September",
-             "Oktober",
-              "November",
-               "Desember"
-            ]
-const d = new Date()
-let antallVinnere = 0
-let antallVinnereIgjen = 0
+    personsList: [
+        "Marianne",
+         "Bjørnar",
+          "Glenn",
+           "Trude",
+            "Lars",
+             "Anne",
+              "Elisabeth",
+               "Helge",
+                "Mathias",
+                 "Mille",
+                  "Roger",
+                   "Nils"
+    ],
+
+    inTheDraw: [],
+
+    months: [
+        "January",
+        "February",
+         "Mars",
+          "April",
+           "May",
+            "June",
+             "July",
+              "August",
+               "September",
+                "October",
+                 "November",
+                  "December"
+    ],
+
+    d: new Date(),
+    amountOfWinners: 0,
+    amountOfWinnersLeft: 0
+}
